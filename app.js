@@ -7,7 +7,7 @@ function app(people){
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   switch(searchType){
     case 'yes':
-    searchByName(people)
+    // promptFor(" );
     break;
     case 'no':
     searchByTraits(people);
@@ -30,18 +30,6 @@ function searchByTraits(people) {
     case "weight":
       filteredPeople = searchByWeight(people);
       break;
-    case "eye color":
-      filteredPeople = searchByEyeColor(people);
-      break;
-    case "gender":
-      filteredPeople = searchByGender(people);
-      break;
-    case "age":
-      filteredPeople = searchByAge(people);
-      break;
-    case "occupation":
-      filteredPeople = searchByOccupation(people);
-      break;
     // so on and so forth
     default:
       alert("You entered an invalid search type! Please try again.");
@@ -57,22 +45,16 @@ function searchByTraits(people) {
 
 function searchByWeight(people) {
   let userInputWeight = prompt("How much does the person weigh?");
-  var filter = "weight";
-  var keyword = "weight";
-  var filteredData = data.filter(function(obj) {
-	return obj[filter] === keyword;
-});
 
-console.log(filteredData)
-//   let newArray = people.filter(function (el) {
-//     if(el.weight == userInputWeight) {
-//       return true;
-//     }
-//     // return true if el.weight matches userInputHeight
-//   });
+  let newArray = people.filter(function (el) {
+    if(el.weight == userInputWeight) {
+      return true;
+    }
+    // return true if el.weight matches userInputHeight
+  });
 
-//   return newArray;
-// }
+  return newArray;
+}
 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
