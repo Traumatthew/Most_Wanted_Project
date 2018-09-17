@@ -56,6 +56,16 @@ function searchByTraits(people) {
    mainMenu(foundPerson, people);
  }
  
+ function searchByHeight(people) {
+  let userInputHeight = prompt("How tall is this person?");
+  let newArray = people.filter(function (el) {
+    if(el.height == userInputHeight) {
+      return true;
+    }
+    // return true if el.weight matches userInputHeight
+  });
+   return newArray;
+}
 
 function searchByWeight(people) {
   let userInputWeight = prompt("How much does the person weigh?");
@@ -67,7 +77,51 @@ function searchByWeight(people) {
   });
    return newArray;
 }
-  
+
+function searchByEyeColor(people) {
+  let userInputWeight = prompt("What is this persons eye color?");
+  let newArray = people.filter(function (el) {
+    if(el.eyecolor == userInputeyecolor) {
+      return true;
+    }
+    // return true if el.eyecolor matches userInputeyecolor
+  });
+   return newArray;
+}
+
+function searchByGender(people) {
+  let userInputGender = prompt("Is this person male or female?");
+  let newArray = people.filter(function (el) {
+    if(el.gender == userInputGender) {
+      return true;
+    }
+    // return true if el.gender matches userInputGender
+  });
+   return newArray;
+}
+
+function searchByAge(people) {
+  let userInputAge = prompt("How old is this person?");
+  let newArray = people.filter(function (el) {
+    if(el.Age == userInputAge) {
+      return true;
+    }
+    // return true if el.weight matches userInputHeight
+  });
+   return newArray;
+}
+
+function searchByOccupation(people) {
+  let userInputOccupation = prompt("What is this persons occupation?");
+  let newArray = people.filter(function (el) {
+    if(el.occupation == userInputOccupation) {
+      return true;
+    }
+    // return true if el.weight matches userInputHeight
+  });
+   return newArray;
+}
+
 
  // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
