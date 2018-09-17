@@ -56,6 +56,16 @@ function searchByTraits(people) {
    mainMenu(foundPerson, people);
  }
  
+ function searchByHeight(people) {
+  let userInputHeight = prompt("How tall is this person?");
+  let newArray = people.filter(function (el) {
+    if(el.height == userInputHeight) {
+      return true;
+    }
+    // return true if el.height matches userInputHeight
+  });
+   return newArray;
+}
 
 function searchByWeight(people) {
   let userInputWeight = prompt("How much does the person weigh?");
@@ -63,11 +73,55 @@ function searchByWeight(people) {
     if(el.weight == userInputWeight) {
       return true;
     }
-    // return true if el.weight matches userInputHeight
+    // return true if el.weight matches userInputWeight
   });
    return newArray;
 }
-  
+
+function searchByEyeColor(people) {
+  let userInputeyeColor = prompt("What is this persons eye color?");
+  let newArray = people.filter(function (el) {
+    if(el.eyecolor == userInputeyeColor) {
+      return true;
+    }
+    // return true if el.eyecolor matches userInputeyeColor
+  });
+   return newArray;
+}
+
+function searchByGender(people) {
+  let userInputGender = prompt("Is this person male or female?");
+  let newArray = people.filter(function (el) {
+    if(el.gender == userInputGender) {
+      return true;
+    }
+    // return true if el.gender matches userInputGender
+  });
+   return newArray;
+}
+
+function searchByAge(people) {
+  let userInputAge = prompt("How old is this person?");
+  let newArray = people.filter(function (el) {
+    if(el.Age == userInputAge) {
+      return true;
+    }
+    // return true if el.age matches userInputAge
+  });
+   return newArray;
+}
+
+function searchByOccupation(people) {
+  let userInputOccupation = prompt("What is this persons occupation?");
+  let newArray = people.filter(function (el) {
+    if(el.occupation == userInputOccupation) {
+      return true;
+    }
+    // return true if el.occupation matches userInputOccupation
+  });
+   return newArray;
+}
+
 
  // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
@@ -127,11 +181,11 @@ function displayPerson(person){
   // height, weight, age, name, occupation, eye color.
   var personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
-  personInfo = "height:" + person.height + "\n";
-  personInfo = "weight:" + person.weight + "\n";
-  personInfo = "age:" + person.age + "\n";
-  personInfo = "occupation:" + person.occupation + "\n";
-  personInfo = "eye color:" + person.eyeColor + "\n";
+  personInfo += "height:" + person.height + "\n";
+  personInfo += "weight:" + person.weight + "\n";
+  personInfo += "age:" + person.age + "\n";
+  personInfo += "occupation:" + person.occupation + "\n";
+  personInfo += "eye color:" + person.eyeColor + "\n";
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
   return personInfo;
