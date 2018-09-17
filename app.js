@@ -62,7 +62,7 @@ function searchByTraits(people) {
     if(el.height == userInputHeight) {
       return true;
     }
-    // return true if el.weight matches userInputHeight
+    // return true if el.height matches userInputHeight
   });
    return newArray;
 }
@@ -73,18 +73,18 @@ function searchByWeight(people) {
     if(el.weight == userInputWeight) {
       return true;
     }
-    // return true if el.weight matches userInputHeight
+    // return true if el.weight matches userInputWeight
   });
    return newArray;
 }
 
 function searchByEyeColor(people) {
-  let userInputWeight = prompt("What is this persons eye color?");
+  let userInputeyeColor = prompt("What is this persons eye color?");
   let newArray = people.filter(function (el) {
-    if(el.eyecolor == userInputeyecolor) {
+    if(el.eyecolor == userInputeyeColor) {
       return true;
     }
-    // return true if el.eyecolor matches userInputeyecolor
+    // return true if el.eyecolor matches userInputeyeColor
   });
    return newArray;
 }
@@ -106,7 +106,7 @@ function searchByAge(people) {
     if(el.Age == userInputAge) {
       return true;
     }
-    // return true if el.weight matches userInputHeight
+    // return true if el.age matches userInputAge
   });
    return newArray;
 }
@@ -117,7 +117,7 @@ function searchByOccupation(people) {
     if(el.occupation == userInputOccupation) {
       return true;
     }
-    // return true if el.weight matches userInputHeight
+    // return true if el.occupation matches userInputOccupation
   });
    return newArray;
 }
@@ -181,11 +181,11 @@ function displayPerson(person){
   // height, weight, age, name, occupation, eye color.
   var personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
-  personInfo = "height:" + person.height + "\n";
-  personInfo = "weight:" + person.weight + "\n";
-  personInfo = "age:" + person.age + "\n";
-  personInfo = "occupation:" + person.occupation + "\n";
-  personInfo = "eye color:" + person.eyeColor + "\n";
+  personInfo += "height:" + person.height + "\n";
+  personInfo += "weight:" + person.weight + "\n";
+  personInfo += "age:" + person.age + "\n";
+  personInfo += "occupation:" + person.occupation + "\n";
+  personInfo += "eye color:" + person.eyeColor + "\n";
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
   return personInfo;
