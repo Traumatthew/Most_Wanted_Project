@@ -218,8 +218,9 @@ function displayPerson(person){
   personInfo += "age:" + person.age + "\n";
   personInfo += "occupation:" + person.occupation + "\n";
   personInfo += "eye color:" + person.eyeColor + "\n";
+  personInfo += "spouse" + person.currentSpouse + "\n";
 
-  alert(personInfo);
+  alert(personInfo,);
 }
  
 
@@ -227,7 +228,8 @@ function displayPerson(person){
 function promptFor(question, callback){
   do{
     var response = prompt(question).trim();
-  } while(!response || !callback(response));
+  } 
+  while(!response || !callback(response));
   return response;
 }
 
@@ -244,19 +246,20 @@ function chars(input){
 
 function findFamily(person, people){
   let spouse = people.filter(function (el){
-    if(el.currentSpouse == person.id) {
+    if(el.id === person.currentSpouse){
       return true;
     }
   });
-  return spouse;
+if(spouse.length > 0) {
+  spouse = spouse[0].firstName;
 }
+}
+// function findParents(person, people){
 //   let parents = people.filter(function (el){
 //     for(let i=0; i < el.parents.length; i++){
+//       if()
       
 
 //         return 
 //     }
 //   });
-  
-// }
-
