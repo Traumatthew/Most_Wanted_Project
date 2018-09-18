@@ -134,24 +134,61 @@ function searchByGender(people) {
 }
 
 function searchByAge(people) {
-  let userInputAge = prompt("How old is this person DD/MM/YYYY?");
-  let today = new Date();
-  let birthDate = new Date(userInputAge);
-  let age = today.getFullYear() - birthDate.getFullYear();
-  let m = today.getMonth() - birthDate.getMonth();
-  if (m < 0 ||  (m === 0 && today.getDate()< birthDate.getDate())) {
-      age--;
+  let userInputAge = prompt("How old is this person?");
+  // need to be changed
+   age = []; 
+   for(i=0; i<people.length; i++){
+        
+        let dobYear = people[i].dob.slice(people[i].dob.length-4, people[i].dob.length);
+
+            dobYear = new Date(dobYear);
+            newDate = new Date();
+            year = dobYear.getFullYear() + 1;
+            year2 = newDate.getFullYear();
+
+//  = people[i].dob.push();
+            people[i].age = year2 - year;
+    }
+   if(data.age == userInputAge) {
+    return true;
   }
-  return age;
+  
+   console.log(age);
+
+          //  age = Date.now() - el.dob;
+          // for(i=0; i<data.length; i++){
+          // dob[i] = people.dob.push("age");
+
+          // };
 
   let newArray = people.filter(function (el) {
-    if(el.Age == userInputAge) {
+    if(el.age == userInputAge) {
       return true;
     }
-    // return true if el.age matches userInputAge
+    // return true if el.weight matches userInputHeight
   });
    return newArray;
 }
+
+// function searchByAge(people) {
+//   let userInputAge = prompt("How old is this person DD/MM/YYYY?");
+//   let today = new Date();
+//   let birthDate = new Date(userInputAge);
+//   let age = today.getFullYear() - birthDate.getFullYear();
+//   let m = today.getMonth() - birthDate.getMonth();
+//   if (m < 0 ||  (m === 0 && today.getDate()< birthDate.getDate())) {
+//       age--;
+//   }
+//   return age;
+
+//   let newArray = people.filter(function (el) {
+//     if(el.Age == userInputAge) {
+//       return true;
+//     }
+//     // return true if el.age matches userInputAge
+//   });
+//    return newArray;
+// }
 
 function searchByOccupation(people) {
   let userInputOccupation = prompt("What is this persons occupation?");
