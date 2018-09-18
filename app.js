@@ -18,6 +18,7 @@ Build all of your functions for displaying and gathering information below (GUI)
     case 'no':
       searchByTraits(people);
       break;
+      
     case 'quit':
       return;
     default:
