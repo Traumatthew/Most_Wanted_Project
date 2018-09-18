@@ -9,7 +9,7 @@ Build all of your functions for displaying and gathering information below (GUI)
   do{
 
   var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
-  
+
   switch(searchType){
     case 'yes':
       searchResults = searchByName(people);
@@ -33,16 +33,16 @@ Build all of your functions for displaying and gathering information below (GUI)
    let foundPerson = searchResults[0];
    mainMenu(foundPerson, people);
 }
-   
+
 
   // once we get one person,
   // go to mainMenu();
- 
+
 
 function searchByTraits(people) {
   let filteredPeople = [];
   do{
-  
+
   let userSearchChoice = prompt("What would you like to search by? 'height', 'weight', 'eye color', 'gender', 'age', 'occupation'.");
 
   switch(userSearchChoice) {
@@ -76,7 +76,7 @@ function searchByTraits(people) {
       alert("You entered an invalid search type! Please try again.");
       searchByTraits(people);
       break;
-    }  
+    }
 
   if (filteredPeople.length > 1) {
     alert("Your search contained more then one result. Refine your search please.");
@@ -186,7 +186,7 @@ function mainMenu(person, people){
     return mainMenu(person, people); // ask again
   }
 }
- 
+
 
 function searchByName(people){
   var firstName = promptFor("What is the person's first name?", chars).toLowerCase();
@@ -220,19 +220,17 @@ function displayPerson(person){
   personInfo += "eye color:" + person.eyeColor + "\n";
   personInfo += "spouse" + person.currentSpouse + "\n";
 
-<<<<<<< HEAD
-  alert(personInfo,);
-=======
+
   alert(personInfo);
->>>>>>> f6c60a79e65db5292c7d341cec1c137f54a898eb
+
 }
- 
+
 
 // function that prompts and validates user input
 function promptFor(question, callback){
   do{
     var response = prompt(question).trim();
-  } 
+  }
   while(!response || !callback(response));
   return response;
 }
@@ -250,7 +248,6 @@ function chars(input){
 
 function findFamily(person, people){
   let spouse = people.filter(function (el){
-<<<<<<< HEAD
     if(el.id === person.currentSpouse){
       return true;
     }
@@ -263,27 +260,8 @@ if(spouse.length > 0) {
 //   let parents = people.filter(function (el){
 //     for(let i=0; i < el.parents.length; i++){
 //       if()
-      
 
-//         return 
+
+//         return
 //     }
 //   });
-=======
-    if(el.currentSpouse == person.id) {
-      return true;
-    }
-  });
-  return spouse;
-}
-  let parents = people.filter(function (el){
-    for(let i=0; i < el.parents.length; i++){
-      if(i == el.parents.length  )
-      
-
-        return 
-    }
-  });
-  
-
-
->>>>>>> f6c60a79e65db5292c7d341cec1c137f54a898eb
