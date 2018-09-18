@@ -244,7 +244,7 @@ let data = [
 		"weight": 241,
 		"eyeColor": "brown",
 		"occupation": "assistant",
-		"parents": [693243224, 888201200],
+		"parents": [693243224, ],
 		"currentSpouse": null
 	},
 	{
