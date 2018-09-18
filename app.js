@@ -218,9 +218,9 @@ function displayPerson(person){
   personInfo += "age: " + person.age + "\n";
   personInfo += "occupation: " + person.occupation + "\n";
   personInfo += "eye color: " + person.eyeColor + "\n";
-  personInfo += "spouse: " + person.currentSpouse + "\n";
+  personInfo += "spouse: " + spouse + "\n";
 
-  alert(personInfo,);
+  alert(personInfo);
 }
  
 
@@ -249,11 +249,16 @@ function findFamily(person, people){
     if(el.id === person.currentSpouse){
       return true;
     }
+    console.log(spouse);
+    return spouse;
   });
-  if(spouse.length > 0) {
+  if(spouse.length < 0) {
     spouse = spouse[0].firstName;
   }
 }
+
+
+
 // function findParents(person, people){
 //   let parents = people.filter(function (el){
 //     for(let i=0; i < el.parents.length; i++){
