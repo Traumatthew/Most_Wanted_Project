@@ -180,6 +180,9 @@ function searchByOccupation(people) {
   let userInputOccupation = prompt("What is this persons occupation?");
   let newArray = people.filter(function (el) {
     if(el.occupation == userInputOccupation) {
+
+
+
       return true;
     }
   });
@@ -247,6 +250,8 @@ function displayPerson(person){
   personInfo += "age:" + person.age + "\n";
   personInfo += "occupation:" + person.occupation + "\n";
   personInfo += "eye color:" + person.eyeColor + "\n";
+  personInfo += "Family:" + person.parents + "\n";
+
 
   alert(personInfo);
 }
@@ -271,22 +276,23 @@ function chars(input){
   return true; // default validation only
 }
 
-function findFamily(person, people){
-  let spouse = people.filter(function (el){
-    if(el.currentSpouse == person.id) {
+
+function findParents (people) {
+
+  //  for(let i=0; i<people.length; i++){
+  //   if(el[i].id == el[i].parents){
+      
+  //   };
+  
+  //   }
+
+  let newArray = people.filter(function (el) {
+    if(el.id == el.parents) {
+
+
+
       return true;
     }
   });
-  return spouse;
-}
-  let parents = people.filter(function (el){
-    for(let i=0; i < el.parents.length; i++){
-      if(i == el.parents.length  )
-      
-
-        return 
-    }
-  });
-  
-
-
+   return newArray;
+};
