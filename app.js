@@ -171,7 +171,7 @@ function mainMenu(person, people){
       displayPerson(person);
     break;
     case "family":
-      findFamily(person, people);
+      findSpouse(person, people);
     break;
     case "descendants":
       displayPeople(people)
@@ -211,6 +211,7 @@ function displayPeople(people){
 
 
 function displayPerson(person){
+  let people = [];
   var personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
   personInfo += "height: " + person.height + "\n";
@@ -218,7 +219,7 @@ function displayPerson(person){
   personInfo += "age: " + person.age + "\n";
   personInfo += "occupation: " + person.occupation + "\n";
   personInfo += "eye color: " + person.eyeColor + "\n";
-  personInfo += "spouse: " + spouse + "\n";
+  personInfo += "spouse: " + findSpouse(person, people) + "\n";
 
   alert(personInfo);
 }
@@ -244,27 +245,27 @@ function chars(input){
   return true; // default validation only
 }
 
-function findFamily(person, people){
+function findSpouse(person, people){
   let spouse = people.filter(function (el){
     if(el.id === person.currentSpouse){
-      return true;
+      return person.firstName;
     }
-    console.log(spouse);
-    return spouse;
   });
   if(spouse.length < 0) {
-    spouse = spouse[0].firstName;
+    spouse = spouse[1].firstName;
   }
+  console.log(spouse);
+  return spouse;
 }
 
 
 
-// function findParents(person, people){
-//   let parents = people.filter(function (el){
-//     for(let i=0; i < el.parents.length; i++){
-//       if()
+function findParents(person, people){
+  let parents = people.filter(function (el){
+    for(let i=0; i < el.parents.length; i++){
+      if()
       
 
-//         return 
-//     }
-//   });
+        return 
+    }
+  });
