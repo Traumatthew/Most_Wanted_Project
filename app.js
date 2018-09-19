@@ -250,8 +250,8 @@ function displayPerson(person){
   personInfo += "age: " + person.age + "\n";
   personInfo += "occupation: " + person.occupation + "\n";
   personInfo += "eye color: " + person.eyeColor + "\n";
-  personInfo += "spouse: " + spouse + "\n";
-  personInfo += "family: " + spouse + "\n";
+  personInfo += "spouse: " + person.spouse + "\n";
+  personInfo += "family: " + person.family + "\n";
 
   alert(personInfo);
 }
@@ -280,26 +280,29 @@ function chars(input){
 
 function findParents (people) {
 
-  //  for(let i=0; i<people.length; i++){
-  //   if(el[i].id == el[i].parents){
+   for(let i=0; i<people.length; i++){
+    if(people[i].id == people[i].parents){
       
-  //   };
-  
-  //   }
-
-  let newArray = people.filter(function (el) {
-    if(el.id == el.parents) {
-
-
+      person[i].push("family") = newArray;
 
       return true;
+    };
+  
     }
-  });
+// let family = "";
+  // family = people.filter(function (el) {
+  //   if(person.id == person.parents) {
+
+      
+  //   }
+  // });
    return newArray;
 };
+
+
 function findFamily(person, people){
   let spouse = people.filter(function (el){
-    if(el.id === person.currentSpouse){
+    if(el.id == person.currentSpouse){
       return true;
     }
     console.log(spouse);
