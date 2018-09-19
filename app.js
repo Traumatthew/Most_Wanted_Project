@@ -18,6 +18,7 @@ Build all of your functions for displaying and gathering information below (GUI)
     case 'no':
       searchByTraits(people);
       break;
+      
     case 'quit':
       return;
     default:
@@ -139,10 +140,38 @@ function searchByGender(people) {
 }
 
 function searchByAge(people) {
-let newArray = people.filter(function (el) {
-    if(el.Age == userInputAge) {
+  let userInputAge = prompt("How old is this person?");
+  // need to be changed
+   age = []; 
+   for(i=0; i<people.length; i++){
+        
+        let dobYear = people[i].dob.slice(people[i].dob.length-4, people[i].dob.length);
+
+            dobYear = new Date(dobYear);
+            newDate = new Date();
+            year = dobYear.getFullYear() + 1;
+            year2 = newDate.getFullYear();
+
+//  = people[i].dob.push();
+            people[i].age = year2 - year;
+    }
+   if(data.age == userInputAge) {
+    return true;
+  }
+  
+   console.log(age);
+
+          //  age = Date.now() - el.dob;
+          // for(i=0; i<data.length; i++){
+          // dob[i] = people.dob.push("age");
+
+          // };
+
+  let newArray = people.filter(function (el) {
+    if(el.age == userInputAge) {
       return true;
     }
+    // return true if el.weight matches userInputHeight
   });
    return newArray;
 }
@@ -151,6 +180,9 @@ function searchByOccupation(people) {
   let userInputOccupation = prompt("What is this persons occupation?");
   let newArray = people.filter(function (el) {
     if(el.occupation == userInputOccupation) {
+
+
+
       return true;
     }
   });
@@ -219,7 +251,9 @@ function displayPerson(person){
   personInfo += "age: " + person.age + "\n";
   personInfo += "occupation: " + person.occupation + "\n";
   personInfo += "eye color: " + person.eyeColor + "\n";
-  personInfo += "spouse: " + findSpouse(person, people) + "\n";
+  personInfo += "spouse: " + person.spouse + "\n";
+  personInfo += "family: " + person.family + "\n";
+
 
   alert(personInfo);
 }
@@ -251,21 +285,49 @@ function findSpouse(person, people){
       return person.firstName;
     }
   });
-  if(spouse.length < 0) {
-    spouse = spouse[1].firstName;
-  }
-  console.log(spouse);
-  return spouse;
+    if(spouse.length < 0) {
+        spouse = spouse[1].firstName;
+      }
+    console.log(spouse);
+    return spouse;
+}
+
+function findFamily(person, people){
+  findParents();
+  findSpouse();
 }
 
 
 
-function findParents(person, people){
-  let parents = people.filter(function (el){
-    for(let i=0; i < el.parents.length; i++){
-      if()
+function findParents (people) {
+
+   for(let i=0; i<people.length; i++){
+    if(people[i].id == people[i].parents){
+      
+      person[i].push("family") = newArray;
+
+      return true;
+    };
+  
+    }
+// let family = "";
+  // family = people.filter(function (el) {
+  //   if(person.id == person.parents) {
+
+      
+  //   }
+  // });
+   return newArray;
+};
+
+
+
+// function findParents(person, people){
+//   let parents = people.filter(function (el){
+//     for(let i=0; i < el.parents.length; i++){
+//       if()
       
 
-        return 
-    }
-  });
+//         return 
+//     }
+//   });
