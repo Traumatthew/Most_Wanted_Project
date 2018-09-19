@@ -35,9 +35,6 @@ Build all of your functions for displaying and gathering information below (GUI)
    mainMenu(foundPerson, people);
 }
    
-
-  // once we get one person,
-  // go to mainMenu();
  
 
 function searchByTraits(people) {
@@ -124,7 +121,6 @@ function searchByEyeColor(people) {
     if(el.eyeColor == userInputEyeColor) {
       return true;
     }
-    // return true if el.eyecolor matches userInputeyeColor
   });
    return newArray;
 }
@@ -141,7 +137,6 @@ function searchByGender(people) {
 
 function searchByAge(people) {
   let userInputAge = prompt("How old is this person?");
-  // need to be changed
    age = []; 
    for(i=0; i<people.length; i++){
         
@@ -152,7 +147,6 @@ function searchByAge(people) {
             year = dobYear.getFullYear() + 1;
             year2 = newDate.getFullYear();
 
-//  = people[i].dob.push();
             people[i].age = year2 - year;
     }
    if(data.age == userInputAge) {
@@ -161,17 +155,10 @@ function searchByAge(people) {
   
    console.log(age);
 
-          //  age = Date.now() - el.dob;
-          // for(i=0; i<data.length; i++){
-          // dob[i] = people.dob.push("age");
-
-          // };
-
   let newArray = people.filter(function (el) {
     if(el.age == userInputAge) {
       return true;
     }
-    // return true if el.weight matches userInputHeight
   });
    return newArray;
 }
@@ -180,9 +167,6 @@ function searchByOccupation(people) {
   let userInputOccupation = prompt("What is this persons occupation?");
   let newArray = people.filter(function (el) {
     if(el.occupation == userInputOccupation) {
-
-
-
       return true;
     }
   });
@@ -190,12 +174,10 @@ function searchByOccupation(people) {
 }
 
 
- // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
-   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
    if(!person){
     alert("Could not find that individual.");
-    return app(people); // restart
+    return app(people);
   }
    var displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
    switch(displayOption){
@@ -207,15 +189,14 @@ function mainMenu(person, people){
     break;
     case "descendants":
       displayPeople(people)
-    // TODO: get person's descendants
     break;
     case "restart":
-    app(people); // restart
+    app(people); 
     break;
     case "quit":
-    return; // stop execution
+    return; 
     default:
-    return mainMenu(person, people); // ask again
+    return mainMenu(person, people); 
   }
 }
  
@@ -230,11 +211,8 @@ function searchByName(people){
   });
    console.log(filteredData);
    return filteredData;
-   // TODO: find the person using the name they entered
  }
 
-
- // alerts a list of people
 function displayPeople(people){
   alert(people.map(function(person){
     return person.firstName + " " + person.lastName;
@@ -251,13 +229,12 @@ function displayPerson(person){
   personInfo += "occupation: " + person.occupation + "\n";
   personInfo += "eye color: " + person.eyeColor + "\n";
   personInfo += "spouse: " + person.spouse + "\n";
-  personInfo += "family: " + person.family + "\n";
+  personInfo += "family: " + person.parents + "\n";
 
   alert(personInfo);
 }
  
 
-// function that prompts and validates user input
 function promptFor(question, callback){
   do{
     var response = prompt(question).trim();
@@ -266,20 +243,17 @@ function promptFor(question, callback){
   return response;
 }
 
-
- // helper function to pass into promptFor to validate yes/no answers
 function yesNo(input){
   return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
 }
 
- // helper function to pass in as default promptFor validation
 function chars(input){
   return true; // default validation only
 }
 
 
 function findParents (people) {
-
+let newArray;
    for(let i=0; i<people.length; i++){
     if(people[i].id == people[i].parents){
       
@@ -313,14 +287,3 @@ function findFamily(person, people){
   }
 }
 
-
-
-// function findParents(person, people){
-//   let parents = people.filter(function (el){
-//     for(let i=0; i < el.parents.length; i++){
-//       if()
-      
-
-//         return 
-//     }
-//   });
