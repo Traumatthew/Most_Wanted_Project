@@ -188,7 +188,12 @@ function mainMenu(person, people){
       findSpouse(person, people);
     break;
     case "descendants":
-      displayPeople(people)
+    let descendants = searchDescendants(person);
+    let descendantsString = "";
+    descendants.forEach(function (descendant) {
+      descendantsString += descendant.firstName + " " + descendant.lastName + "\n";
+    });
+    alert(descendantsString);
     break;
     case "restart":
     app(people); 
@@ -199,7 +204,31 @@ function mainMenu(person, people){
     return mainMenu(person, people); 
   }
 }
- 
+function setAge() {
+  data.map(function (el) {
+    let date = new Date();
+    let currentYear = date.getFullYear();
+    let currentMonth = date.getMonth();
+    let currentDay = date.getDay();
+    let birthString = el.dob;
+    let holder = birthString.split("/")
+    let birthMonth = holder[0];
+    let birthDay = holder[1];
+    let birthYearString = holder[2];
+    let birthMonthInt = parseInt(birthMonth);
+    let birthDayInt = parseInt(birthDay);
+    let birthYearInt = parseInt(birthYearString)
+
+    el.age = currentYear - birthYearInt;
+
+    if (birthMonthInt < currentMonth && birthDayInt < currentDay) {
+      el.age -= 1;
+    }
+    else if (birthMonthInt < currentMonth) {
+      el.age -= 1;
+    
+  })
+}
 
 function searchByName(people){
   var firstName = promptFor("What is the person's first name?", chars).toLowerCase();
@@ -295,29 +324,3 @@ let newArray;
 };
 
 
-<<<<<<< HEAD
-function findFamily(person, people){
-  let spouse = people.filter(function (el){
-    if(el.id == person.currentSpouse){
-      return true;
-    }
-    console.log(spouse);
-    return spouse;
-  });
-  if(spouse.length < 0) {
-    spouse = spouse[0].firstName;
-  }
-}
-
-=======
-
-// function findParents(person, people){
-//   let parents = people.filter(function (el){
-//     for(let i=0; i < el.parents.length; i++){
-//       if()
-      
-
-//         return 
-//     }
-//   });
->>>>>>> bb0b59bf566757e7e3a3fb5dee653ccc16f837be
