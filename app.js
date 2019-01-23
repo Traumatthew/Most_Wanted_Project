@@ -185,7 +185,7 @@ function mainMenu(person, people){
       displayPerson(person);
     break;
     case "family":
-      findSpouse(person, people);
+    searchFamily(person);
     break;
     case "descendants":
     let descendants = searchDescendants(person);
@@ -204,7 +204,7 @@ function mainMenu(person, people){
     return mainMenu(person, people); 
   }
 }
-function setAge() {
+ function setAge() {
   data.map(function (el) {
     let date = new Date();
     let currentYear = date.getFullYear();
@@ -226,9 +226,27 @@ function setAge() {
     }
     else if (birthMonthInt < currentMonth) {
       el.age -= 1;
-    
+    }
   })
 }
+function searchDescendants(person) {
+  let results = data.filter(function (el) {
+    if (el.parents.includes(person.id)) {
+      return true;
+    }
+  });
+
+  if (results.length == 0) {
+    return [];
+  } else {
+    for (let i = 0; i < results.length; i++) {
+      results = results.concat(searchDescendants(results[i]));
+    }
+    return results;
+  }
+
+}
+
 
 function searchByName(people){
   var firstName = promptFor("What is the person's first name?", chars).toLowerCase();
@@ -258,11 +276,60 @@ function displayPerson(person){
   personInfo += "age: " + person.age + "\n";
   personInfo += "occupation: " + person.occupation + "\n";
   personInfo += "eye color: " + person.eyeColor + "\n";
-  personInfo += "spouse: " + person.spouse + "\n";
-  personInfo += "family: " + person.parents + "\n";
+ 
 
 
   alert(personInfo);
+}
+function searchFamily(person) {
+  let resultString = "";
+  let siblingsResults = [];
+
+  if (person.parents.length > 0) {
+    resultString += "Parents:\n";
+    parentResults = data.filter(function (el) {
+      if (person.parents.includes(el.id)) {
+        return true;
+      }
+    });
+    for (let i = 0; i < parentResults.length; i++) {
+      resultString += parentResults[i].firstName + " " + parentResults[i].lastName + "\n";
+    }
+  }
+  let tempResults;
+  for (let x = 0; x < parentResults.length; x++) {
+    tempResults = data.filter(function (el) {
+      if (el.parents.includes(parentResults[x].id) && el.id != person.id && !siblingsResults.includes(el)) {
+        return true;
+      }
+    })
+    for (let k = 0; k < tempResults.length; k++) {
+      siblingsResults.push(tempResults[k]);
+    }
+  }
+
+  if (siblingsResults.length > 0) {
+    resultString += "Siblings:\n"
+    for (let h = 0; h < siblingsResults.length; h++) {
+      resultString += siblingsResults[h].firstName + " " + siblingsResults[h].lastName + " " + "\n";
+    }
+  }
+
+  let kidResults = data.filter(function (el) {
+    if (el.parents.includes(person.id)) {
+      return true;
+    }
+  })
+  if (kidResults.length > 0) {
+    resultString += "Kids:\n";
+    for (let x = 0; x < kidResults.length; x++) {
+      resultString += kidResults[x].firstName + " " + kidResults[x].lastName + "\n";
+    }
+  }
+
+
+  alert(resultString);
+
 }
  
 
@@ -278,8 +345,15 @@ function yesNo(input){
   return input.toLowerCase() == "yes" || input.toLowerCase() == "no";
 }
 
-function chars(input){
-  return true; // default validation only
+function numbers(input) {
+  const numsRegExp = /\d+/;
+  return numsRegExp.test(input);
+}
+
+// helper function to pass in as default promptFor validation
+function chars(input) {
+  const charsRegExp = /[A-Za-z]+/;
+  return charsRegExp.test(input);
 }
 
 function findSpouse(person, people){
@@ -295,24 +369,10 @@ function findSpouse(person, people){
     return spouse;
 }
 
-function findFamily(person, people){
-  findParents();
-  findSpouse();
-}
 
 
 
-function findParents (people) {
-let newArray;
-   for(let i=0; i<people.length; i++){
-    if(people[i].id == people[i].parents){
-      
-      person[i].push("family") = newArray;
 
-      return true;
-    };
-  
-    }
 // let family = "";
   // family = people.filter(function (el) {
   //   if(person.id == person.parents) {
@@ -320,7 +380,7 @@ let newArray;
       
   //   }
   // });
-   return newArray;
-};
+  
+
 
 
